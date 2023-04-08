@@ -113,7 +113,7 @@ const config = {
           //   ],
           // },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} EasyORM. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} EasyORM.`,
       },
       prism: {
         theme: lightCodeTheme,

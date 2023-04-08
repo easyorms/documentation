@@ -1,7 +1,7 @@
 ---
-sidebar_position: 1
+sidebar_position: 2
 ---
-# Configuration
+# Select using Query Builder
 ## Config file
 In EasyORM we are supporting a Json file as a configuration file, this file is used to specify the application models path, database infos and extra informations, you can use this example and personalise it with your own config :
 

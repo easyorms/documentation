@@ -1,0 +1,21 @@
+---
+sidebar_position: 2
+---
+# Insert using Query Builder
+To persist your object using Easy ORM is very simple. You just need to follow these steps:
+
+```js
+Person oussama = new Person("C1234", "Oussama");
+EasyOrm
+    .buildObject(oussama.class)
+    .save(oussama);
+```
+
+And it also supports the persistence of your object's relationships, but the relationships must be persisted first.
+
+```js
+Car car = new Car("191", "Mercedes", oussama);
+EasyOrm
+    .buildObject(Car.class)
+    .save(car);
+```

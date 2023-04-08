@@ -5,7 +5,7 @@ sidebar_position: 2
 
 :::caution
 
-The only requirement is to respect the convention of JavaBeans
+The only requirement is to respect the convention of [JavaBeans](https://en.wikipedia.org/wiki/JavaBeans)
 
 :::
 
