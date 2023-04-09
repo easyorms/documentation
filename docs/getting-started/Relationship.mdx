@@ -1,0 +1,120 @@
+---
+sidebar_position: 4
+---
+
+# Mapping Relations
+
+EasyORM provides easy and flexible options for mapping relations between different classes. By following the Java convention of implementing relationships using instance variables and collections, EasyORM can handle different types of relationships between your classes.
+
+## One-to-One Relationship
+
+In a one-to-one relationship between two classes, each instance of one class is associated with exactly one instance of the other class. In Java, this relationship is usually implemented using an instance variable of the target class as an attribute of the source class. To establish a one-to-one relationship between two classes, the target class should be declared as a field of the source class.
+
+For example, suppose we have a Student class that has a Identity field representing the identity of the student. The Identity class should be declared as a field of the Student class as follows:
+
+```js
+public class Student {
+    private Integer id;
+    private String name;
+
+    private Identity nationalIdentity;
+}
+```
+
+and in the Identity class, a Student field should be declared as a field of the Student class as follows : 
+
+```js
+public class Identity {
+    private String identity;
+
+    private Student student;
+}
+```
+
+## One-to-Many Relationship
+
+In a one-to-many relationship between two classes, each instance of one class is associated with zero or more instances of the other class. In Java, this relationship is usually implemented using a collection (e.g. List) of the target class as an attribute of the source class. To establish a one-to-many relationship between two classes, the target class should be declared as a collection field of the source class.
+
+For example, suppose we have a Student class that has a Department object as follows. 
+
+```js
+public class Student {
+    private Integer id;
+    private String name;
+
+    private Identity nationalIdentity;
+		
+	// one-to-many relation
+    private Department nationalIdentity;
+}
+```
+
+In order to have a one-to-many relation between Student and Department classes, the Department class should have a list of students objects as follows:
+
+```js
+public class Department {
+    private Integer id;
+    private String name;
+
+	// many-to-one relation
+    private List<Student> students;
+}
+```
+
+## Many-to-Many Relationship
+
+In a many-to-many relationship between two classes, each instance of one class is associated with zero or more instances of the other class, and vice versa. In Java, this relationship is usually implemented using a collection (e.g. List) of the target class as an attribute of both classes. To establish a many-to-many relationship between two classes, both classes should be declared as collection fields of the other class.
+
+For example, suppose we have a Student class that has a List of Course objects representing the courses that the student is taking, and the Course class has a List of Student objects representing the students who are taking the course. The Course class should be declared as a field of the Student class, and the Student class should be declared as a field of the Course class as follows :
+
+```js
+public class Student {
+    private Integer id;
+    private String name;
+
+    private Identity nationalIdentity;
+    private Department nationalIdentity;
+		
+	// many-to-many relation
+    private List<Course> courses;
+}
+
+public class Course {
+    private Integer id;
+    private String name;
+
+	// many-to-many relation
+    private List<Student> students;
+}
+```
+
+:::danger Take care
+  Relations are mapped by order
+:::
+
+If a class has more than one relation with the same other class, the order of the fields in the class will determine the mapping between the relations.
+
+
+
+
+```js
+public class Student {
+    private Integer id;
+    private String name;
+
+    private Department department;
+    private List<Department> alternateDepartments;
+}
+
+public class Department {
+    private Integer id;
+    private String name;
+
+    private List<Student> students; 
+    private List<Student> alternateStudents;
+}
+```
+
+In this case department will be mapped with students
+
+and alternateDepartments will be mapped with alternateStudents.

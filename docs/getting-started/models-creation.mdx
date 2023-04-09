@@ -1,0 +1,38 @@
+---
+sidebar_position: 2
+---
+# Models creation
+
+:::tip Note
+
+The only requirement is to respect the convention of [JavaBeans](https://en.wikipedia.org/wiki/JavaBeans)
+
+:::
+
+# **Creating Models**
+
+To create a model in EasyORM, you simply need to create a plain Java class that follows the convention of JavaBeans.
+
+The only requirement when creating models is to respect the convention of JavaBeans:
+
+- The class must have a default constructor with no parameters.
+- Private attributes of the class (instance variables) must be accessed publicly through accessor methods built with "get" or "set" followed by the capitalized name of the attribute.
+- The class must not be declared final.
+- The class must be serializable to be able to save and restore the state of the instances of this class (although this is not required for EasyOrm).
+
+By default, EasyORM will automatically map your Java class to a database table with the same name as the class. The first field of the class will be used as the primary key of the table.
+
+With this convention, you can keep your classes simple and easy to read. But it stills the flexibility to customize the table name, primary key and columns as needed.
+
+```js
+
+public class User {
+    private Long id;
+    private String firstName;
+    private String lastName;
+    private Integer age;
+    
+	// Default constructor
+	// getters and setters
+}
+```

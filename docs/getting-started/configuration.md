@@ -2,10 +2,24 @@
 sidebar_position: 1
 ---
 # Configuration
-## Config file
-In EasyORM we are supporting a Json file as a configuration file, this file is used to specify the application models path, database infos and extra informations, you can use this example and personalise it with your own config :
+To use EasyORM in your Maven project, you should add the following dependency to your **`pom.xml`** file:
 
-```json  title="src/main/java/ressources/config.json"
+```xml title="porm.xml"
+<dependency>
+  <groupId>org.easyorm</groupId>
+  <artifactId>EasyOrm</artifactId>
+  <version>1.0.0</version>
+</dependency>
+```
+
+## config file
+
+EasyORM can be configured using a JSON file named **`config.json`**, which should be placed in the resource folder of your Java project. The configuration file specifies the models package, database URL, username, password, database creation strategy, and connection pool size.
+
+Here's an example configuration file:
+
+```json title="src/main/java/ressources/config.json"
+
 {
   "models": "org.easyorm.models",
 
@@ -16,52 +30,29 @@ In EasyORM we are supporting a Json file as a configuration file, this file is u
     "strategy": "create",
     "dialect" : "mysql"
   },
+
   "connectionPool": {
     "maxSize": 10
   }
 }
 ```
 
-This file should be named config.json and it should be put in the resources directory in a java project.
+### **Models Package**
 
-### models
-  This attribute specifies the package name where the application models are located.
-### database 
-This attribute contains details about the the database to be used such as :
-  - The URL to connect to the database,
-  - The username and password for authentication
-  - The strategy to use it can be
-    - “create” : create tables for the first time in the database
-    - “create-drop” : drops all database tables and re-create them
-    - “update” : this strategy keeps all tables as they are in the database, and give the user the ability to interact with those tables
-    - “drop” : this strategy drops the database tables
+The **`models`** property specifies the package where your model classes are located. All model classes must be in this package or a subpackage.
 
-### connectionPool 
-  This attribute sets the maximum size of the connection pool that will be used to manage connections to the database. The connection pool is a mechanism used to improve performance by reusing existing database connections rather than creating a new connection for each database request.
+### **Database Configuration**
 
-**As simple as this your config is done, and no more complex steps are needed**
+The **`database`** property specifies the configuration for the database connection. The properties are as follows:
 
-## Annotation
-**But you have the option to configure the attributes or the class using four annotations: @Table, @Column, @Id, @Ignore.**
+- **`url`**: The URL of the database.
+- **`username`**: The username to use when connecting to the database.
+- **`password`**: The password to use when connecting to the database.
+- **`strategy`**: The strategy to use when creating the database. This can be **`create`**, **`update`**, or **`create-drop`**. If set to **`create`**, the database tables will be created if they do not exist. If set to **`create-drop`**, the database tables will be dropped and re-created. If set to **`update`** no table will be created or modified you can interact with your tables.
+- **`dialect`**: The SQL dialect to use when working with the database. This can be **`mysql`**, **`postgres`** or **`H2`**.
 
-### @Table 
-Defines the table. It is useful if you want to change the name of the table in the database, otherwise it will be the name of the class.
- ```js
-  @Table(name = "newNameOfTable")
- ```
+### **Connection Pool Configuration**
 
-### @Id
- Defines the primary key of the table. It is useful if you want to change it, change its name, or change its size if it is a string. Otherwise, the default primary key of the table is the first attribute of the class.
- ```js
-  @Id(name = "newNameOfPrimaeyKey", autoIncrement = true)
- ```
-### @Column
- Defines a column of the table. It is useful if you want to change it, change its name, change its size if it is a string, or set it as a null or unique value.
- ```js
-    @Column(name = "newNameOfColumn", nullable = false, length = 255)
- ```
-### @Ignore
- It is useful if you want to ignore an attribute of the class, even though it is not a member of the table in the database.
-  ```js
-    @Ignore()
- ```
+The **`connectionPool`** property specifies the configuration for the connection pool. The only property is **`maxSize`**, which specifies the maximum number of connections that can be created in the connection pool.
+
+By configuring these properties in the **`config.json`** file and adding the Maven dependency or importing the jar file, you can easily customize EasyORM to meet the needs of your application.

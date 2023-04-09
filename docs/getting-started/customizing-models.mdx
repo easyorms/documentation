@@ -1,0 +1,95 @@
+---
+sidebar_position: 3
+---
+# Customizing Models
+
+When creating your model classes, you can use annotations to customize the table name, primary key, and columns. Here are the available annotations: **@Table, @Column, @Id, @Ignore.**
+
+## @Table
+ Use this annotation to define the table name. By default, the table name is the same as the class name. Example:
+
+```js
+@Table(name = "new_table_name")
+public class MyModel {
+  //...
+}
+```
+
+## @Column
+Use this annotation to define a column of the table. By default, the column name is the same as the attribute name. You can use this annotation to change the column name, set its length if it is a string, or set it as nullable or unique. Example:
+
+```js
+
+@Column(name = "new_column_name", nullable = false, unique = true, length = 50)
+private String myAttribute;
+
+```
+
+## @Id
+  Use this annotation to define the primary key of the table. By default, the primary key is the first attribute of the class. You can use this annotation to change the primary key, change its name, or set it as auto-increment. Example:
+
+```js
+@Id(name = "new_primary_key_name", autoIncrement = true)
+private Integer myPrimaryKey;
+```
+
+## @Ignore
+ Use this annotation to ignore an attribute of the class, so it is not going to be a member of the table in the database. Example :
+
+```js
+@Ignore()
+private Integer myAttribute;
+```
+:::tip Note
+If you use annotations to customize your table and column names, EasyORM will use these annotations instead of the default conventions.
+:::
+
+Examples : 
+
+```js
+import org.easyorm.annotations.Column;
+import org.easyorm.annotations.Id;
+import org.easyorm.annotations.Ignore;
+import org.easyorm.annotations.Table;
+
+@Table(name = "users")
+public class User {
+    @Id(name = "user_id")
+    private Long id;
+    
+    @Column(name = "first_name", length = 50)
+    private String firstName;
+    
+    @Column(name = "last_name", length = 50)
+    private String lastName;
+    
+    @Column(nullable = false)
+    private Integer age;
+    
+    @Ignore
+    private String address;
+
+		// Default constructor
+		// getters and setters
+
+}
+```
+
+:::tip Note
+
+You can customize only some attributes and keep others using conventions
+:::
+
+```js
+import org.easyorm.annotations.Id;
+import org.easyorm.annotations.Table;
+
+@Table(name = "users")
+public class User {
+    @Id(name = "user_id")
+    private Long id;
+    private String firstName;
+    private String lastName;
+    private int age;
+}
+```
