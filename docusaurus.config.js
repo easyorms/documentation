@@ -11,18 +11,18 @@ const config = {
   favicon: 'img/easyORMLogo.png',
 
   // Set the production url of your site here
-  url: 'https://your-docusaurus-test-site.com',
+  url: 'https://oussama-el-amrani.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/',
+  baseUrl: '/ormframework-website/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  organizationName: 'oussama-el-amrani', // Usually your GitHub org/user name.
+  projectName: 'ormFramework-website', // Usually your repo name.
 
   onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
+  onBrokenMarkdownLinks: 'throw',
 
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
@@ -91,27 +91,14 @@ const config = {
           },
         ],
       },
+      announcementBar: {
+        id: "support_us", // Any value that will identify this message.
+        content:
+          '⭐️ If you like EasyORM, give it a star on <a target="_blank" rel="noopener noreferrer" href="https://github.com/marwaneRomani/OrmFramework">GitHub!</a>  ⭐️ ',
+      },
       footer: {
         style: 'dark',
         links: [
-          // {
-          //   title: 'Docs',
-          //   items: [
-          //     {
-          //       label: 'Tutorial',
-          //       to: '/docs/intro',
-          //     },
-          //   ],
-          // },
-          // {
-          //   title: 'More',
-          //   items: [
-          //     {
-          //       label: 'GitHub',
-          //       href: 'https://github.com/marwaneRomani/OrmFramework',
-          //     },
-          //   ],
-          // },
         ],
         copyright: `Copyright © ${new Date().getFullYear()} EasyORM.`,
       },

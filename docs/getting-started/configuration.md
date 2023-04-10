@@ -2,9 +2,11 @@
 sidebar_position: 1
 ---
 # Configuration
+
+
 To use EasyORM in your Maven project, you should add the following dependency to your **`pom.xml`** file:
 
-```xml title="porm.xml"
+```xml title="pom.xml"
 <dependency>
   <groupId>org.easyorm</groupId>
   <artifactId>EasyOrm</artifactId>

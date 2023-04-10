@@ -5,7 +5,7 @@ import styles from "./styles.module.css";
 const FeatureList = [
   {
     title: "Easy to Easy",
-    Svg: require("@site/static/img/undraw_docusaurus_mountain.svg").default,
+    Svg: require("@site/static/img/easy-to-easy.svg").default,
     description: (
       <>EasyORM was designed to enable quick database setup and easy querying</>
     ),
