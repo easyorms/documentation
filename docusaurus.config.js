@@ -11,15 +11,15 @@ const config = {
   favicon: 'img/easyORMLogo.png',
 
   // Set the production url of your site here
-  url: 'https://oussama-el-amrani.github.io',
+  url: 'https://easyorms.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/ormFramework-website/',
+  baseUrl: '/documentation/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'oussama-el-amrani', // Usually your GitHub org/user name.
-  projectName: 'ormFramework-website', // Usually your repo name.
+  organizationName: 'easyorms', // Usually your GitHub org/user name.
+  projectName: 'documentation', // Usually your repo name.
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'throw',
